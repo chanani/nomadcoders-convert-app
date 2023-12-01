@@ -202,7 +202,7 @@
           <div className="second-input">
             <label htmlFor="hours">坪(평)</label>
             <input 
-              value={flipped ? amount : amount !== 0 ? (amount * 3.025).toFixed(2)  : 0}
+              value={flipped ? amount : amount !== 0 ? (amount / 3.025).toFixed(2)  : 0}
               id="hours" 
               type="number" 
               placeholder="Hours"
