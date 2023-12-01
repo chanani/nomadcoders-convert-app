@@ -30,41 +30,69 @@
     }
     const reset = () => setAmount(0);
     const onFlip = () => {
-      reset();
       setFlipped((current) => !current);
+      reset();
     }
     return ( 
-    <div>
-      <div>
-      <label htmlFor="minutes">Minutes</label>
-      <input 
-        value={flipped ? amount * 60 : amount}
-        id="minutes" 
-        type="number" 
-        placeholder="Minutes"
-        onChange={onChange}
-        disabled={flipped}
-      />
-    </div>
-    <div>
-      <label htmlFor="hours">Hours</label>
-      <input 
-        value={flipped ? amount : Math.round(amount / 60)}
-        id="hours" 
-        type="number" 
-        placeholder="Hours"
-        disabled={!flipped}
-        onChange={onChange}
-      />
-    </div>
-    <button onClick={reset}>Reset</button>
-    <button onClick={onFlip}>flip</button>
-      
+    <div className="container">
+      <div className="input-box">
+        <div className="first-input">
+          <label htmlFor="minutes">Minutes</label>
+          <input 
+            value={flipped ? amount * 60 : amount}
+            id="minutes" 
+            type="number" 
+            placeholder="Minutes"
+            onChange={onChange}
+            disabled={flipped}
+          />
+        </div>
+        
+        <div className="arrow">
+          <p>▶</p>
+        </div>
+        
+        <div className="second-input">
+          <label htmlFor="hours">Hours</label>
+          <input 
+            value={flipped ? amount : Math.round(amount / 60)}
+            id="hours" 
+            type="number" 
+            placeholder="Hours"
+            disabled={!flipped}
+            onChange={onChange}
+          />
+        </div>
+      </div>
+      <div className="btn-box">
+
+        <div className="reset-box">
+          <button className="reset-btn resetIcon yellow" onClick={reset}>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M 2 2 L 4.9394531 4.9394531 C 3.1262684 6.7482143 2 9.2427079 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 6.486 17.514 2 12 2 L 12 4 C 16.411 4 20 7.589 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 9.7940092 4.9004767 7.7972757 6.3496094 6.3496094 L 9 9 L 9 2 L 2 2 z">
+              </path>
+            </svg>
+          </button>
+          <span className="reset-span">Reset</span>
+        </div>
+
+        <div className="flip-box">
+          <span className="flip-">Flip</span>
+
+          <button className="flip-btn resetIcon purple" onClick={onFlip}>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M 2 2 L 4.9394531 4.9394531 C 3.1262684 6.7482143 2 9.2427079 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 6.486 17.514 2 12 2 L 12 4 C 16.411 4 20 7.589 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 9.7940092 4.9004767 7.7972757 6.3496094 6.3496094 L 9 9 L 9 2 L 2 2 z">
+              </path>
+            </svg>
+          </button>
+        </div>
+        
+        </div>
     </div>
     );
   }
  
-  function KmToMiles(){
+  function CmToInch(){
     const [cm, setCm] = React.useState(0);
     const [inch, setInch] = React.useState(0);
     const [flip, setFlip] = React.useState(false);
@@ -79,43 +107,135 @@
       setInch(0);
     }
     const changeFlip = () => {
-      reset();
       setFlip((current) => !current);
+      reset();
     }
 
+    
     return (
-      <div>
-        <div>
-          <label htmlFor="cm">cm</label>
-          <input 
-            value={flip ? inch * 2.54 : cm}
-            id="cm" 
-            type="number" 
-            placeholder="cm"
-            onChange={onChangeCm}
-            disabled={flip}
-          />
+      <div className="container">
+        <div className="input-box">
+          <div className="first-input">
+            <label htmlFor="cm">cm</label>
+            <input 
+              value={flip ? inch * 2.54 : cm}
+              id="cm" 
+              type="number" 
+              placeholder="cm"
+              onChange={onChangeCm}
+              disabled={flip}
+            />
+          </div>
+
+          <div className="arrow">
+            <p>▶</p>
+          </div>
+
+          <div className="second-input">
+            <label htmlFor="inch">inch</label>
+            <input 
+              value={flip ? inch : cm !== 0 ? (cm / 2.54).toFixed(2) : 0}
+              id="inch" 
+              type="number" 
+              placeholder="inch"
+              onChange={onChangeInch}
+              disabled={!flip}
+            />
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="inch">inch</label>
-          <input 
-          value={flip ? inch : cm !== 0 ? (cm / 2.54).toFixed(2) : 0}
-            id="inch" 
-            type="number" 
-            placeholder="inch"
-            onChange={onChangeInch}
-            disabled={!flip}
-          />
-        </div>
+        <div className="btn-box">
+          <div className="reset-box">
+            <button className="reset-btn resetIcon yellow" onClick={reset}>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M 2 2 L 4.9394531 4.9394531 C 3.1262684 6.7482143 2 9.2427079 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 6.486 17.514 2 12 2 L 12 4 C 16.411 4 20 7.589 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 9.7940092 4.9004767 7.7972757 6.3496094 6.3496094 L 9 9 L 9 2 L 2 2 z">
+                </path>
+              </svg>
+            </button>
+            <span className="reset-span">Reset</span>
+          </div>
 
-        <button onClick={reset}>Reset</button>
-        <button onClick={changeFlip}>Flip</button>
+          <div className="flip-box">
+            <span className="flip-">Flip</span>
+            <button className="flip-btn resetIcon purple" onClick={changeFlip}>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M 2 2 L 4.9394531 4.9394531 C 3.1262684 6.7482143 2 9.2427079 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 6.486 17.514 2 12 2 L 12 4 C 16.411 4 20 7.589 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 9.7940092 4.9004767 7.7972757 6.3496094 6.3496094 L 9 9 L 9 2 L 2 2 z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
 
+  function MeterToFootage() {
+    const [amount, setAmount] = React.useState(0);
+    const [flipped, setFlipped] = React.useState(false);
+    const onChange = (event) => {
+      setAmount(event.target.value);
+    }
+    const reset = () => setAmount(0);
+    const onFlip = () => {
+      setFlipped((current) => !current);
+      reset();
+    }
+    return ( 
+      <div className="container">
+        <div className="input-box">
+          <div className="first-input">
+            <label htmlFor="meter">Square meter(㎡)</label>
+            <input 
+              value={!flipped ? amount : amount !== 0 ? (amount * 3.306).toFixed(2)  : 0}
+              id="meter" 
+              type="number" 
+              placeholder="meter"
+              onChange={onChange}
+              disabled={flipped}
+            />
+          </div>
 
+          <div className="arrow">
+            <p>▶</p>
+          </div>
+
+          <div className="second-input">
+            <label htmlFor="hours">坪(평)</label>
+            <input 
+              value={flipped ? amount : amount !== 0 ? (amount * 3.025).toFixed(2)  : 0}
+              id="hours" 
+              type="number" 
+              placeholder="Hours"
+              disabled={!flipped}
+              onChange={onChange}
+            />
+          </div>
+        </div>
+        
+        <div className="btn-box">
+          <div className="reset-box">
+            <button className="reset-btn resetIcon yellow" onClick={reset}>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M 2 2 L 4.9394531 4.9394531 C 3.1262684 6.7482143 2 9.2427079 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 6.486 17.514 2 12 2 L 12 4 C 16.411 4 20 7.589 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 9.7940092 4.9004767 7.7972757 6.3496094 6.3496094 L 9 9 L 9 2 L 2 2 z">
+                </path>
+              </svg>
+            </button>
+            <span className="reset-span">Reset</span>
+          </div>
+
+          <div className="flip-box">
+            <span className="flip-">Flip</span>
+            <button className="flip-btn resetIcon purple" onClick={onFlip}>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M 2 2 L 4.9394531 4.9394531 C 3.1262684 6.7482143 2 9.2427079 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 6.486 17.514 2 12 2 L 12 4 C 16.411 4 20 7.589 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 9.7940092 4.9004767 7.7972757 6.3496094 6.3496094 L 9 9 L 9 2 L 2 2 z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
 
   function App() {
@@ -123,20 +243,31 @@
     const onSelect = (event) => {
       setIndex(event.target.value);
     }
+    const titleReset = () => {setIndex("x")}
     return ( 
     <div>
-      <h1>Super Converter</h1>
-      <select value={index} onChange={onSelect}>
-        <option value="x">Select Your units</option>
-        <option value="0">Minutes & Hours</option>  
-        <option value="1">Cm & Inch</option>  
-      </select>
+      <div className="title-box">
+        <div className="title-sub">
+          <h1 className="title">Super Converter</h1>
+          <button className="title-reset resetIcon" onClick={titleReset}><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24"><path d="M 2 2 L 4.9394531 4.9394531 C 3.1262684 6.7482143 2 9.2427079 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 6.486 17.514 2 12 2 L 12 4 C 16.411 4 20 7.589 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 9.7940092 4.9004767 7.7972757 6.3496094 6.3496094 L 9 9 L 9 2 L 2 2 z"></path></svg></button>
+        </div>
+      </div>
       <hr/>
-      {index === "x" ? "Please select your units" : null}
-      {index === "0" ?  <MinutesToHours /> : null}
-      {index === "1" ?  <KmToMiles /> : null}
+      <div className="select-box">
+          <select value={index} onChange={onSelect} className="selectTag">
+            <option value="x">Please select one !</option>
+            <option value="0">Minutes To Hours</option>  
+            <option value="1">Cm To Inch</option>  
+            <option value="2">㎡ To 坪(평)</option>  
+          </select>
+        </div>
+        
+        {index === "x" ? <div className="mainImg-box"><img className="mainImg" src="https://helloleesul.github.io/reactjs-super-converter/Calculator_Flatline.svg"></img></div> : null}
+        {index === "0" ?  <MinutesToHours /> : null}
+        {index === "1" ?  <CmToInch /> : null}
+        {index === "2" ?  <MeterToFootage /> : null}
 
-    </div>
+      </div>
     );
   }
 
