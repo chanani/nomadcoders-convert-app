@@ -55,11 +55,11 @@ body{
 .arrow{
   width: 10%;
   height: 68px;
-  line-height: 5.5;
+  line-height: 3.8;
 }
 .arrow p {
   text-align: center;
-
+  font-size: 25px;
 }
 .first-input input, .second-input input {
   height: 40px;
